@@ -1,0 +1,236 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distinguishing Real from AI-Generated Images</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .upload-container {
+        margin: 30px auto;
+        text-align: center;
+    }
+    .btn {
+        border: 2px solid gray;
+        color: white;
+        background-color: #4CAF50;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .image-preview {
+        width: 480px;
+        height: 320px;
+        margin: 20px auto;
+        border: 5px solid #4CAF50;
+        background-color: #d9d9d9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-preview img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .results {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .results p {
+        font-size: 18px;
+        color: #333;
+    }
+    .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Distinguishing Real from AI-Generated Images Prototype</h1>
+</div>
+
+<div class="upload-container">
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="input-file" required hidden />
+        <label for="input-file" class="btn">Choose an image...</label>
+        <input type="submit" class="btn" value="Differentiate Image" />
+    </form>
+</div>
+
+<div class="image-preview" id="image-preview-area">
+    <!-- 预览区域，用JavaScript设置 -->
+<!-- </div>
+
+{% if prediction_text %}
+    <div class="results">
+        <h2>Results:</h2>
+        <p>Probability of AI-Generated: {{ pro }}%</p>
+        <p>Prediction: {{ prediction_text }}</p>
+    </div>
+{% endif %}
+
+<div class="footer">
+    <p>© 2023 Distinguishing Real from AI-Generated Images Prototype. All rights reserved.</p>
+</div>
+
+<script>
+// 用于处理图片预览的JavaScript
+document.getElementById('input-file').addEventListener('change', function(event){
+    var output = document.getElementById('image-preview-area');
+    var files = event.target.files;
+
+    if(files && files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            output.innerHTML = '<img src="' + e.target.result + '" />';
+        }
+        reader.readAsDataURL(files[0]);
+    }
+});
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distinguishing Real from AI-Generated Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .upload-container {
+            margin: 30px auto;
+            text-align: center;
+        }
+        .btn {
+            border: 2px solid gray;
+            color: white;
+            background-color: #4CAF50;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .image-preview {
+            width: 480px;
+            height: 320px;
+            margin: 20px auto;
+            border: 5px solid #4CAF50;
+            background-color: #d9d9d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .results {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .results p {
+            font-size: 18px;
+            color: #333;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Distinguishing Real from AI-Generated Images Prototype</h1>
+</div>
+
+<div class="upload-container">
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="input-file" required hidden />
+        <label for="input-file" class="btn">Choose an image...</label>
+        <input type="submit" class="btn" value="Differentiate Image" />
+    </form>
+</div>
+
+{% if prediction_text %}
+    <div class="image-preview" id="image-preview-area">
+        <!-- 显示上传的图片 -->
+        <img src="{{ image_data_uri }}" />
+    </div>
+
+    <div class="results">
+        <h2>Results:</h2>
+        <!-- <p>Probability of AI-Generated: {{ pro }}%</p> -->
+        <p>Prediction: {{ prediction_text }}</p>
+    </div>
+{% else %}
+    <div class="image-preview" id="image-preview-area">
+        <!-- 预览区域，用JavaScript设置 -->
+    </div>
+{% endif %}
+
+<!-- <div class="footer">
+    <p>© 2023 Distinguishing Real from AI-Generated Images Prototype. All rights reserved.</p>
+</div> -->
+
+<script>
+// 用于处理图片预览的JavaScript
+document.getElementById('input-file').addEventListener('change', function(event){
+    var output = document.getElementById('image-preview-area');
+    var files = event.target.files;
+
+    if(files && files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            output.innerHTML = '<img src="' + e.target.result + '" />';
+        }
+        reader.readAsDataURL(files[0]);
+    }
+});
+</script>
+
+</body>
+</html>
