@@ -94,7 +94,7 @@ We experimented with two classification approaches:
 ---
 
 ## Team Members
-- **Liao Yijie** - System Architecture, Model Development, UI Design
+- **Liao Yijie** - System Architecture, Model Development, UI Design, Data Preprocessing
 - **Shao Zixuan** - Data Preprocessing, Model Training, Performance Analysis
 
 📩 Contact: [Emails]
