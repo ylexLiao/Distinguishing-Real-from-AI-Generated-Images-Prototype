@@ -33,7 +33,7 @@ We experimented with two classification approaches:
   - Fully connected **Softmax Output** layer
 - **Training Accuracy**: **61.0%**
 - **Testing Accuracy**: **31.08%**
-
+![cuCNN](cuCNN.png)
 #### **2. Transfer Learning - MobileNetV2**
 - **Input Size**: 96x96 pixels
 - **Pretrained MobileNetV2 backbone**
